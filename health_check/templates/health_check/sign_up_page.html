@@ -1,0 +1,38 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+<h1>Sign Up</h1>
+
+<!--link needs to be added-->
+<p> <a href="">User already exist? Click here to sign in</a></p>
+
+<!--method of transferring data (post) needs to be added-->
+<section id="forms">
+    <form>
+        <fieldset id="forms__input">
+            <legend>Input fields</legend>
+            <p>
+                <label for="input__text">Name</label>
+                <input id="input__text" type="text" placeholder="Name">
+            </p>
+            <p>
+                <label for="input__emailaddress">Email Address</label>
+                <input id="input__emailaddress" type="email" placeholder="name@email.com">
+            </p>
+            <p>
+                <label for="input__text">Username</label>
+                <input id="input__text" type="text" placeholder="Username">
+            </p>
+            <p>
+                <label for="input__password">Password</label>
+                <input id="input__password" type="password" placeholder="Type your Password">
+            </p>
+
+
+
+
+        </fieldset>
+    </form>
+</section>
+</div>
+{%endblock content%}

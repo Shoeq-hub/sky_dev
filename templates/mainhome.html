@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Main template</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <ul>
+                <li><img src="{% static 'health_check/skylogo.png' %}" alt="sky" /></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page-specific content will appear here -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

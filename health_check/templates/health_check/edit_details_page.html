@@ -1,0 +1,49 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+<h1>Profile</h1>
+
+<!--method of transferring data (post) needs to be added-->
+<section id="forms">
+    <form>
+        <fieldset id="forms__input">
+            <legend>Profile Details</legend>
+            <p>Name: (name)</p>
+
+            <p>Email: (email)</p>
+
+            <p>Username: (username)</p>
+
+            <p>Address: (address)</p>
+
+            <section id="forms"></section>
+
+            <p>Change your details:</p>
+
+<!--post method to be added or something-->
+
+            <p>
+                <label for="input__text">New Name</label>
+                <input id="input__text" type="text" placeholder="New Name">
+            </p>
+            <p>
+                <label for="input__emailaddress">New Email Address</label>
+                <input id="input__emailaddress" type="email" placeholder="newEmail@email.com">
+            </p>
+            <p>
+                <label for="input__text">New Username</label>
+                <input id="input__text" type="text" placeholder="New Username">
+            </p>
+            <p>
+                <label for="input__password">New Address</label>
+                <input id="input__password" type="password" placeholder="New Address">
+            </p>
+    
+    
+    
+    
+            </fieldset>
+    </form>
+</section>
+</div>
+{%endblock content%}

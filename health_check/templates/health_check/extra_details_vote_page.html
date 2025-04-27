@@ -1,0 +1,28 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+<h1>Extra Details</h1>
+<!--PROGRESS BAR NEEDS TO BE VARIABLES-->
+<label for="progress-30">30%, max 100%</label>		
+<progress id="progress-30" max="100" value="30">30%</progress>
+
+<fieldset id="forms__textareas">
+
+    <p>If red/yellow, please describe what things are leading to this. If green, please explain what has been done right to achieve this result.</p>
+    <p>
+        <label for="textarea">Textarea</label>
+        <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
+    </p>
+</fieldset>
+
+<fieldset id="forms__textareas">
+
+    <p>Explain what things can be done to improve progress to green. If already green, please suggest new ideas that may make you even happier.</p>
+    <p>
+        <label for="textarea">Textarea</label>
+        <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
+    </p>
+</fieldset>
+<button type="button" href="">Submit</button>
+</div>
+{%endblock content%}

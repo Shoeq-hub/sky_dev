@@ -1,0 +1,21 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+<h1>Voting Page</h1>
+<!--PROGRESS BAR NEEDS TO BE VARIABLES-->
+<label for="progress-30">30%, max 100%</label>		
+<progress id="progress-30" max="100" value="30">30%</progress>
+{%load static%}
+    <p><img src="{% static 'health_check/card 1.png' %}" alt="sky"</p>
+    <p>card description here as variable from database</p>
+    <fieldset id="forms__radio">
+        <legend>Vote</legend>
+        <ul>
+            <li><label for="radio1"><input id="radio1" name="radio" type="radio" checked="checked">Green</label></li>
+            <li><label for="radio2"><input id="radio2" name="radio" type="radio"> Yellow</label></li>
+            <li><label for="radio3"><input id="radio3" name="radio" type="radio"> Red</label></li>
+        </ul>
+        <button type="button" href="">Submit</button>
+    </fieldset>
+</div>
+{%endblock content%}

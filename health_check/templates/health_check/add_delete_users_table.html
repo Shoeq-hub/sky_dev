@@ -1,0 +1,76 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+<h1>Add/Delete Users</h1>
+
+<p>
+    <label for="input__text">Search User</label>
+    <input id="input__text" type="text" placeholder="John Doe">
+</p>
+<label for="select">Filter Type</label>
+<select id="select">
+    <optgroup label="Filter Type">
+        <option>idk</option>
+        <option>idk2</option>
+        <option>idk3</option>
+        <option>idk4</option>
+    </optgroup>
+</select>
+<br>
+<button type="button" href="">Add New User</button>
+
+<!--YOUD WANT TO USE A FOR LOOP TO DISPLAY THE USERS 100 PERCENT THIS IS JUST THE HTML FOR A TABLE-->
+<!--IDK HOW MANY ATTRIBUTES A USER WILL HAVE SO I HAVE ONLY MADE THE TABLE IT CAN BE SMALLER OR BIGGER-->
+<table>
+    <caption>Table Caption</caption>
+    <thead>
+        <tr>
+            <th>Table Heading 1</th>
+            <th>Table Heading 2</th>
+            <th>Table Heading 3</th>
+            <th>Table Heading 4</th>
+            <th>Table Heading 5</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Table Footer 1</th>
+            <th>Table Footer 2</th>
+            <th>Table Footer 3</th>
+            <th>Table Footer 4</th>
+            <th>Table Footer 5</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>Table Cell 1</td>
+            <td>Table Cell 2</td>
+            <td>Table Cell 3</td>
+            <td>Table Cell 4</td>
+            <td>Table Cell 5</td>
+        </tr>
+        <tr>
+            <td>Table Cell 1</td>
+            <td>Table Cell 2</td>
+            <td>Table Cell 3</td>
+            <td>Table Cell 4</td>
+            <td>Table Cell 5</td>
+        </tr>
+        <tr>
+            <td>Table Cell 1</td>
+            <td>Table Cell 2</td>
+            <td>Table Cell 3</td>
+            <td>Table Cell 4</td>
+            <td>Table Cell 5</td>
+        </tr>
+        <tr>
+            <td>Table Cell 1</td>
+            <td>Table Cell 2</td>
+            <td>Table Cell 3</td>
+            <td>Table Cell 4</td>
+            <td>Table Cell 5</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+{%endblock content%}
