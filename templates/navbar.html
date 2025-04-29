@@ -1,14 +1,44 @@
-<!-- this is for non admin -->
+<!-- THIS CHECK FOR UNREGISTRED USER -->
 <header>
     {% load static %}
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <nav>
         <ul>
-            <li><img src="{% static 'health_check/skylogo.png' %}" alt="sky" </li>
-            <li><a href="">Profile</a></li>
-            <li><a href="">Health Check</a></li>
-            <li><a href="">Change Password</a></li>
-            <li><a href="">Log out</a></li>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'health_check/skylogo.png' %}" alt="sky">
+            </a>            
+            {% if user.is_authenticated %}
+                {% if user.profile.role == 'Team Leader' %}
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'leadermenupage' %}">Health Check</a>
+                    <a href="{% url 'passwordchange' %}">Change Password</a>
+                    <a href="{% url 'adddeleteuser' %}">Admin Function</a>
+                    <a href="{% url 'logoutaccount' %}">Log out ({{ user.profile.role }} {{ user.username }})</a>
+
+                {% elif user.profile.role == 'Senior Manager' %}   
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'DepSeniormenupage' %}">Health Check</a>
+                    <a href="{% url 'passwordchange' %}">Change Password</a>
+                    <a href="{% url 'adddeleteuser' %}">Admin Function</a>
+                    <a href="{% url 'logoutaccount' %}">Log out ({{ user.profile.role }} {{ user.username }})</a>
+
+                {% elif user.profile.role == 'Department Leader' %}   
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'DepSeniormenupage' %}">Health Check</a>
+                    <a href="{% url 'passwordchange' %}">Change Password</a>
+                    <a href="{% url 'adddeleteuser' %}">Admin Function</a>
+                    <a href="{% url 'logoutaccount' %}">Log out ({{ user.profile.role }} {{ user.username }})</a>
+
+                {% elif user.profile.role == 'Admin' %}
+                    <a href="{% url 'logoutaccount' %}">Log out ({{ user.profile.role }} {{ user.username }})</a>
+
+                {% else %} <!-- Engineer -->
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'menupage' %}">Health Check</a>
+                    <a href="{% url 'passwordchange' %}">Change Password</a>
+                    <a href="{% url 'logoutaccount' %}">Log out ({{ user.profile.role }} {{ user.username }})</a>  
+                {% endif %}
+            {% endif %}
         </ul>
     </nav>
 </header>

@@ -1,0 +1,38 @@
+{%extends 'mainhome.html'%}
+{%block content%}
+<!-- this will not be use anymore because i can check what role they have in database -->
+<!-- deelte this -->
+<div>
+    {% if user.is_authenticated %}
+        {% if user.profile.role == 'Admin' %}
+        <h1>Choose Your Role</h1>
+        <ul>
+            <button type="button" onclick="location.href='http://127.0.0.1:8000/administrator/adddeleteuser';"
+                class="btn">User</button>
+            <br>
+            <button type="button" onclick="location.href='http://127.0.0.1:8000/administrator/adddeleteteam';"
+                class="btn">Team</button>
+            <br>
+            <button type="button" onclick="location.href='http://127.0.0.1:8000/administrator/adddeletecard';"
+                class="btn">Cards</button>
+            <br>
+            <button type="button" href="">Sessions</button>
+            <br>
+            
+        </ul>
+
+        {% else %}
+        <h1>You Are Not A Registered Administrator!</h1>
+
+        {% endif %}
+    {% else %}
+    <h1>Please Sign up/Sign in before using this web page</h1>
+    <ul>
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/accounts/login';" class="btn">Login
+            </button>
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/accounts/signupaccount';" class="btn">Sign
+            Up</button>
+    </ul>
+    {% endif %}
+</div>
+{%endblock content%}

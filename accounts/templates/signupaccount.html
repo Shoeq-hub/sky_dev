@@ -5,18 +5,20 @@
     <div class="row g-0">
         <div>
             <div class="card-body">
-                <h5 class="card-title">Sign Up</h5>
-                {% if error %}
+                {% if form.errors %}
                 <div class="alert alert-danger mt-3" role="alert">
-                    {{ error }}
+                    <ul>
+                        {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
                 {% endif %}
+
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">
-                        Sign Up
-                    </button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
                 </form>
 
                 <a href="{% url 'loginaccount' %}" class="btn btn-secondary mt-3">

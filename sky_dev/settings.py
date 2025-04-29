@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'health_check',
     'accounts',
+    'departmentleader',
+    'administrator',
+    'seniormanager',
+    'teamleader',
 ]
 
 MIDDLEWARE = [

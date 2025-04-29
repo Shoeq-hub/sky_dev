@@ -1,6 +1,13 @@
 {%extends 'main.html'%}
 {%block content%}
+<!-- SEND USER TO THIS PAGE AFTER THEY LOGOUT -->
 <div>
 <h1>Thank you for using sky health check!</h1>
 </div>
+<ul>
+    <button type="button" onclick="location.href='http://127.0.0.1:8000/accounts/login';" class="btn">Login
+        </button>
+    <button type="button" onclick="location.href='http://127.0.0.1:8000/accounts/signupaccount';" class="btn">Sign
+        Up</button>
+</ul>
 {%endblock content%}

@@ -1,26 +1,27 @@
 {%extends 'main.html'%}
 {%block content%}
 <div>
-<h1>Add/Delete Departments</h1>
+<h1>Add/Delete Cards</h1>
 
 <p>
-    <label for="input__text">Search Department</label>
-    <input id="input__text" type="text" placeholder="Department1">
+    <label for="input__text">Search Card</label>
+    <input id="input__text" type="text" placeholder="Card1">
 </p>
 <label for="select">Filter Type</label>
 <select id="select">
     <optgroup label="Filter Type">
-        <option>Department1</option>
-        <option>Department2</option>
-        <option>Department3</option>
-        <option>Department4</option>
+        <option>Card1</option>
+        <option>Card2</option>
+        <option>Card3</option>
+        <option>Card4</option>
     </optgroup>
 </select>
 <br>
-<button type="button" href="">Add New Department</button>
+<button type="button" onclick="location.href='http://127.0.0.1:8000/administrator/addcard';"
+                class="btn">Add New Card</button>
 
 <!--YOUD WANT TO USE A FOR LOOP TO DISPLAY THE USERS 100 PERCENT THIS IS JUST THE HTML FOR A TABLE-->
-<!--IDK HOW MANY ATTRIBUTES A Department WILL HAVE SO I HAVE ONLY MADE THE TABLE IT CAN BE SMALLER OR BIGGER-->
+<!--IDK HOW MANY ATTRIBUTES A TEAM WILL HAVE SO I HAVE ONLY MADE THE TABLE IT CAN BE SMALLER OR BIGGER-->
 <table>
     <caption>Table Caption</caption>
     <thead>
@@ -74,6 +75,5 @@
 </table>
 </div>
 {%endblock content%}
-
 
 

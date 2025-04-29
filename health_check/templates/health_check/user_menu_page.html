@@ -1,15 +1,17 @@
 {%extends 'main.html'%}
 {%block content%}
 <div>
-<h1>Menu</h1>
+<h1>Health Check Menu</h1>
     <ul>
-        <button type="button" href="">Start Session</button>
+        <button type="button" href="">Start Session i dont know what to link this with</button> <!-- what does this lead to? tell me in whatsapp so i can link it-->
         <br>
-        <button type="button" href="">Continue Session</button>
+        <button type="button" href="">Continue Session i dont know what to link this with</button> <!-- what does this lead to?-->
         <br>
-        <button type="button" href="">View Team Summary</button>
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/summaryselection/';" class="btn">View Summary
+        </button>
         <br>
-        <button type="button" href="">View Progress</button>
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/trendselection';" class="btn">View Progress
+        </button>
     </ul>
 </div>
 {%endblock content%}

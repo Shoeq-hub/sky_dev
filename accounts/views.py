@@ -5,36 +5,34 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
+from .models import Profile
 from .forms import UserCreateForm
 
 def signupaccount(request):
     if request.method == 'GET':
         return render(request, 'signupaccount.html', {'form': UserCreateForm()})
     else:
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(
-                    username=request.POST['username'],
-                    password=request.POST['password1']
-                )
-                user.save()
-                login(request, user)
-                return redirect('home')
-            except IntegrityError:
-                return render(request, 'signupaccount.html', {
-                    'form': UserCreateForm(),
-                    'error': 'Username already taken. Choose a new username.'
-                })
+        form = UserCreateForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.save()
+            
+            role = form.cleaned_data.get('role')
+            profile = Profile(user=user, role=role)
+            profile.save()
+
+            login(request, user)  # Log the user in
+            return redirect('home')  # Redirect to home page after successful signup
         else:
-            return render(request, 'signupaccount.html', {
-                'form': UserCreateForm(),
-                'error': 'Passwords do not match.'
-            })
+            return render(request, 'signupaccount.html', {'form': form})
+
 
 @login_required
 def logoutaccount(request):
     logout(request)
-    return redirect('home')
+    return redirect('logoutmessage')
 
 def loginaccount(request):
     if request.method == 'GET':

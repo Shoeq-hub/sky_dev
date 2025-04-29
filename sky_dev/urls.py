@@ -21,4 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('health_check.urls')), #check health check urls
     path('accounts/', include('accounts.urls')), #check account urls
+    path('teamleader/', include('teamleader.urls')),
+    path('departmentleader/', include('departmentleader.urls')),
+    path('administrator/', include('administrator.urls')),
 ]
