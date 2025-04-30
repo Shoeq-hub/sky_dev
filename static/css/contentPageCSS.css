@@ -43,3 +43,18 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+.btn-link {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.btn-link:hover {
+    background-color: #0056b3;
+}

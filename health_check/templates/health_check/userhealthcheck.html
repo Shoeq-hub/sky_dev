@@ -1,0 +1,151 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="form-container">
+    <h2>Delivering Value</h2>
+    <form method="post" onsubmit="return validateSubmission()">
+        {% csrf_token %}
+
+        <label class="label">1. Select the color that represents your current state:</label><br>
+        <div id="colorOptions">
+            <div class="circle red" onclick="selectColor('red')"></div>
+            <div class="circle yellow" onclick="selectColor('yellow')"></div>
+            <div class="circle green" onclick="selectColor('green')"></div>
+        </div>
+        <input type="hidden" name="color_status" id="color_status" value="">
+
+        <label class="label">2. Choose the status:</label>
+        <select id="statusDropdown" disabled>
+            <option value="">Select status</option>
+        </select>
+
+        <label class="label">3. Reason for current state:</label>
+        <textarea name="reason" id="reasonInput" rows="4" oninput="updateProgress()"></textarea>
+
+        <label class="label">4. What can be improved (or new ideas if already green)?</label>
+        <textarea name="improvement" id="improvementInput" rows="4" oninput="updateProgress()"></textarea>
+
+        <progress id="progressBar" value="0" max="100"></progress>
+        <p id="progressText">0% completed</p>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+<style>
+
+    .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 10px 10px 20px 0;
+        cursor: pointer;
+        border: 3px solid transparent;
+    }
+
+    .circle.selected {
+        border-color: #000;
+    }
+
+    .red {
+        background: red;
+    }
+
+    .yellow {
+        background: yellow;
+    }
+
+    .green {
+        background: green;
+    }
+    
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        resize: vertical;
+    }
+
+    button {
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    progress {
+        width: 100%;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+    }
+</style>
+<script>
+    const statusOptions = {
+        red: ["red-stable", "red-improving", "red-worse"],
+        yellow: ["yellow-stable", "yellow-improving", "yellow-worse"],
+        green: ["green-stable", "green-improving", "green-worse"]
+    };
+
+    function selectColor(color) {
+        // Visual selection
+        document.querySelectorAll('.circle').forEach(c => c.classList.remove('selected'));
+        document.querySelector(`.circle.${color}`).classList.add('selected');
+
+        // Set status options
+        const dropdown = document.getElementById("statusDropdown");
+        dropdown.innerHTML = "";
+        dropdown.disabled = false;
+
+        const placeholder = document.createElement("option");
+        placeholder.text = "Select status";
+        placeholder.value = "";
+        dropdown.add(placeholder);
+
+        statusOptions[color].forEach(status => {
+            const option = document.createElement("option");
+            option.value = status;
+            option.text = status.replace('-', ' - ').replace('-', ' ');
+            dropdown.add(option);
+        });
+
+        dropdown.onchange = () => {
+            document.getElementById("color_status").value = dropdown.value;
+            updateProgress();
+        };
+    }
+
+    function updateProgress() {
+        let progress = 0;
+        if (document.getElementById("color_status").value) progress += 30;
+        if (document.getElementById("reasonInput").value.trim() !== "") progress += 40;
+        if (document.getElementById("improvementInput").value.trim() !== "") progress += 30;
+        if (progress > 100) progress = 100;
+
+        document.getElementById("progressBar").value = progress;
+        document.getElementById("progressText").innerText = `${progress}% completed`;
+    }
+
+    function validateSubmission() {
+        const progress = document.getElementById("progressBar").value;
+        if (progress < 100) {
+            alert("Please complete all fields before submitting.");
+            return false;
+        }
+        return true;
+    }
+</script>
+{% endblock content %}

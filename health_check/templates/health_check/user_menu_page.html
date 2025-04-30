@@ -1,13 +1,15 @@
 {%extends 'main.html'%}
 {%block content%}
 <div>
-<h1>Health Check Menu</h1>
+    <h1>Health Check Menu</h1>
     <ul>
-        <button type="button" href="">Start Session i dont know what to link this with</button> <!-- what does this lead to? tell me in whatsapp so i can link it-->
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/health/delivering-value/';" class="btn">
+            Complete health check</button>
         <br>
-        <button type="button" href="">Continue Session i dont know what to link this with</button> <!-- what does this lead to?-->
+        <a href="{% url 'home' %}" class="button">Continue Session</a> change this
         <br>
-        <button type="button" onclick="location.href='http://127.0.0.1:8000/summaryselection/';" class="btn">View Summary
+        <button type="button" onclick="location.href='http://127.0.0.1:8000/summaryselection/';" class="btn">View
+            Summary
         </button>
         <br>
         <button type="button" onclick="location.href='http://127.0.0.1:8000/trendselection';" class="btn">View Progress

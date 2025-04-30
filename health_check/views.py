@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import DeliveringValueForm
+from .models import DeliveringValue
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -37,3 +41,30 @@ def passwordchange(request):
 #from project template folder
 def navbar(request):
     return render (request, 'navbar.html')
+
+@login_required
+def delivering_value_view(request):
+    if request.method == 'POST':
+        form = DeliveringValueForm(request.POST)
+        if form.is_valid():
+            dv = form.save(commit=False)
+            dv.user = request.user  # Assign the current logged-in user
+            dv.save()
+            request.session['submitted'] = True  # Set the session variable
+            return redirect('confirm_submission')
+    else:
+        form = DeliveringValueForm()
+
+    return render(request, 'health_check/userhealthcheck.html', {'form': form})
+
+def confirm_submission(request):
+    return render(request, 'health_check/confirm.html')
+
+
+def view_submission(request):
+    if request.session.get('submitted', False):
+        data = DeliveringValue.objects.latest('submitted_at')
+        return render(request, 'health_check/view_submission.html', {'data': data})
+    return redirect('delivering_value')
+
+

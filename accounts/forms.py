@@ -17,3 +17,4 @@ class UserCreateForm(UserCreationForm):
         for fieldname in self.fields:
             self.fields[fieldname].widget.attrs.update({'class': 'form-control'})
             self.fields[fieldname].help_text = None
+

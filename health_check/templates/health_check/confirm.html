@@ -1,0 +1,13 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+    <h1>Form submitted successfully!</h1>
+    <p>Would you like to view your answers?</p>
+    <ul>
+        <a href="{% url 'view_submission' %}" class="button">Yes</a>
+        <a href="{% url 'home' %}" class="button">No</a>
+        <!-- what does this lead to?-->
+    </ul>
+</div>
+
+{%endblock content%}

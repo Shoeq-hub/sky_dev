@@ -1,0 +1,12 @@
+{%extends 'main.html'%}
+{%block content%}
+<div>
+    <h1>Your Submitted Answers</h1>
+    <p><strong>Color Status:</strong> {{ data.color_status }}</p>
+    <p><strong>Reason:</strong> {{ data.reason }}</p>
+    <p><strong>Improvement:</strong> {{ data.improvement }}</p>
+    <a href="{% url 'home' %}" class="button">Home</a>
+</div>
+
+{%endblock content%}
+

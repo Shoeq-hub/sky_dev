@@ -24,4 +24,5 @@ urlpatterns = [
     path('teamleader/', include('teamleader.urls')),
     path('departmentleader/', include('departmentleader.urls')),
     path('administrator/', include('administrator.urls')),
+    path('health/', include('health_check.urls')), 
 ]

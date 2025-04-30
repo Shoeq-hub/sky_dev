@@ -51,3 +51,5 @@ def loginaccount(request):
         else:
             login(request, user)
             return redirect('home')
+
+
